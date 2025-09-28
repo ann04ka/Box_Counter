@@ -1,13 +1,34 @@
+version: '3.8'
+
 services:
-  box_counter:
+  model_inference:
     build: .
-    container_name: box_counter
+    container_name: model_inference
+
     volumes:
-      - ./images:/root/images
-      - ./results:/root/results
-      - ./check_files.py:/root/check_files.py
-    working_dir: /root
+      - ./models:/app/models            # Папка с весами
+      - ./images:/app/input             # Входные изображения
+      - ./results:/app/output           # Папка для результатов
+      - ./inference.py:/app/inference.py  # Скрипт инференса
+
+    working_dir: /app
+
+    environment:
+      - PYTHONPATH=/app
+      - TORCH_HOME=/app/models/.torch  # Кэш PyTorch моделей
+
     tty: true
     stdin_open: true
-    entrypoint: >
-      bash -c "python3 check_files.py && cat results/result.csv"
+
+    # Для batch инференса:
+    command: ["python", "inference.py", "--input", "/app/input", "--output", "/app/output"]
+
+    # Ограничения ресурсов (опционально)
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 8G
+        reservations:
+          cpus: '4.0'
+          memory: 8G

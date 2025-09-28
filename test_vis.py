@@ -10,7 +10,7 @@ import numpy as np
 
 ORIG_ROOT = "images"
 OUT_DIR = "test_visualization_three_heads"
-MODEL_PATH = "best_model_advanced.pth"
+MODEL_PATH = "models/best_model_advanced.pth"
 
 try:
     from train_advanced import AdvancedBoxCounter

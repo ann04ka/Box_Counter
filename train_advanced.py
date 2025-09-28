@@ -306,7 +306,7 @@ class AdvancedTrainer:
             if val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
                 self.patience_counter = 0
-                torch.save(self.model.state_dict(), 'best_model_advanced.pth')
+                torch.save(self.model.state_dict(), 'models/best_model_advanced.pth')
                 print(f"New best model saved (val_loss: {val_loss:.4f})")
             else:
                 self.patience_counter += 1
@@ -384,7 +384,7 @@ def main():
 
     trainer.train()
 
-    model.load_state_dict(torch.load('best_model_advanced.pth'))
+    model.load_state_dict(torch.load('models/best_model_advanced.pth'))
     evaluate_model(model, test_loader)
 
 def evaluate_model(model, test_loader):
