@@ -9,7 +9,7 @@ import onnxruntime as ort
 
 
 IMAGES_ROOT = "images"
-RESULT_CSV  = "results/result.csv"
+RESULT_CSV = "/app/results/result.csv"
 MODEL_PATH  = "models/best_model_advanced.pth"
 ONNX_PATH = "models/best_model_advanced.onnx"
 
