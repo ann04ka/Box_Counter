@@ -1,4 +1,4 @@
-# Box Counter Project
+# Box Counter
 
 **Важно:** Веса обученной модели и датасет с синтетическими данными хранятся на диске по ссылке: [ДИСК box_counter](https://drive.google.com/drive/folders/1MP9I_pDscGyoZnAGnygGrl6gGwl416tW?usp=drive_link)
 
