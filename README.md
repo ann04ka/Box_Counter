@@ -241,9 +241,12 @@ docker-compose build --no-cache
 
 2. **Запуск инференса**:
 ```bash
+docker run -v "${PWD}/results:/app/results" Box_Counter-model_inference
+```
+Для того чтобы файл сохранился не толко внутри контейнера, но и в папке проекта
+```
 docker-compose up
 ```
-
 ### Конфигурация Docker
 
 **Dockerfile**: 
